@@ -1,24 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Todo } from '../todo.model';
+import { TodoService } from '../todo.service';
+
 
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.scss']
 })
-export class TodoListComponent  implements OnInit{
+export class TodoListComponent implements OnInit {
   todos: Todo[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private todoService: TodoService,) { }
 
   ngOnInit(): void {
-    this.getTodos();
+    this.todoService.getTodos().subscribe(todos => {
+      this.todos = todos;
+    });
   }
-  getTodos(): void {
-    this.http.get<Todo[]>('http://localhost:3000/todos')
-      .subscribe((todos) => {
-        this.todos = todos;
-      });
+
+  updateTodoState(event: any, todo: Todo): void {
+    const checked = event.target.checked;
+    todo.done = checked;
+    this.todoService.updateTodoState(todo).subscribe(updatedTodo => {
+      if (updatedTodo.done) {
+        this.todos = this.todos.filter(item => item !== updatedTodo);
+        this.todos.push(updatedTodo);
+      }
+    });
   }
 }

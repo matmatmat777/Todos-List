@@ -17,13 +17,14 @@ export class TodoDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const todoId = this.route.snapshot.paramMap.get('id');
-    console.log(todoId);
-    if (todoId) {
-      this.todoService.getTodoById(parseInt(todoId)).subscribe(todo => {
+    this.route.params.subscribe(params => {
+      const id = params['id'];
+      console.log(id);
+      this.todoService.getTodoById(id).subscribe(todo => {
         this.todo = todo;
       });
-    }
+    });
   }
-}
+  }
+
 

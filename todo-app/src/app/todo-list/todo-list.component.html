@@ -1,15 +1,10 @@
 <div class="row">
-  <div class="col-12  mb-5">
+  <div class="col-12 mb-5">
     <div *ngFor="let todo of todos">
       <label>
         <input type="checkbox" [(ngModel)]="todo.done" (change)="updateTodoState($event, todo)">
-
-
-        <span [ngClass]="{'done': todo.done}">{{ todo.title }} </span>
-
+        <span [ngClass]="{'done': todo.done}"><a [routerLink]="['/todos', todo.id]">{{ todo.title }}</a></span>
       </label>
-      <div> <a [routerLink]="['/todos', todo.id]">View Details</a></div>
     </div>
-
   </div>
 </div>

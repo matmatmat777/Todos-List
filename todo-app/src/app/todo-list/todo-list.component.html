@@ -1,5 +1,26 @@
 <div class="row">
   <div class="col-4 offset-4 mt-5 mb-5">
+    <div class="col text-center mb-3">Ajouter un nouveau Todo</div>
+    <!-- Formulaire pour ajouter un nouveau todo -->
+    <form (submit)="addNewTodo()">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Titre" [ngModelOptions]="{standalone: true}" [(ngModel)]="newTodo.title" required>
+      </div>
+      <div class="form-group">
+        <textarea class="form-control" rows="3" placeholder="Description" [ngModelOptions]="{standalone: true}" [(ngModel)]="newTodo.description"></textarea>
+      </div>
+      
+      <div class="row mt-3">
+        <div class="col text-center">
+
+          <button type="submit" class="btn btn-primary text-center">Ajouter</button>
+        </div>
+      </div>
+    </form>
+
+    <hr>
+
+    <!-- Liste des todos -->
     <div *ngFor="let todo of todos">
       <label>
         <input type="checkbox" [(ngModel)]="todo.done" (change)="updateTodoState($event, todo)">

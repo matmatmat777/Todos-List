@@ -49,6 +49,27 @@ app.put('/todos/:id', (req, res) => {
   res.json(todos[todoIndex]);
 });
 
+app.post('/todos', (req, res) => {
+  const newTodo = req.body;
+
+  // Génération d'un nouvel ID pour le todo
+  const newTodoId = todos.length + 1;
+
+  // Création du nouvel objet todo
+  const todo = {
+    id: newTodoId,
+    title: newTodo.title,
+    done: false,
+    description: newTodo.description
+  };
+
+  // Ajout du nouvel todo à la liste des todos
+  todos.unshift(todo);
+
+  // Envoi du nouvel todo en réponse
+  res.status(201).json(todo);
+});
+
 
 app.listen(3000, () => {
   console.log('server starts on port 3000');

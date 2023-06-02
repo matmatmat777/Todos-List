@@ -29,8 +29,8 @@ export class TodoListComponent implements OnInit {
     todo.done = checked;
     this.todoService.updateTodoState(todo).subscribe(updatedTodo => {
       if (updatedTodo.done) {
-        this.todos = this.todos.filter(item => item !== updatedTodo);
-        this.todos.unshift(updatedTodo);
+        this.todos = this.todos.filter(item => item.id !== updatedTodo.id); // Retirer la tâche de la liste
+        this.todos.push(updatedTodo); // Ajouter la tâche en bas de la liste
       }
     });
   }

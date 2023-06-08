@@ -4,6 +4,7 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoDetailComponent } from './todo-detail/todo-detail.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/todos', pathMatch: 'full' }, // Redirection vers /todos
   { path: 'todos/:id', component: TodoDetailComponent },
   { path: 'todos', component: TodoListComponent },
 

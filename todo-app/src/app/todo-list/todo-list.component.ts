@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Todo } from '../todo.model';
 import { TodoService } from '../todo.service';
 
@@ -16,7 +17,8 @@ export class TodoListComponent implements OnInit {
       id: 0
   };
 
-  constructor(private todoService: TodoService) { }
+  constructor(private todoService: TodoService, private router: Router) { }
+
 
   ngOnInit(): void {
     this.todoService.getTodos().subscribe(todos => {
@@ -47,5 +49,15 @@ export class TodoListComponent implements OnInit {
         };
       });
     }
+  }
+
+  goToTodoDetail(todo: Todo): void {
+    const todoId = todo.id;
+    this.router.navigate(['/todos', todoId]);
+  }
+  deleteTodo(todo: Todo): void {
+    this.todoService.deleteTodo(todo.id).subscribe(() => {
+      this.todos = this.todos.filter(item => item.id !== todo.id);
+    });
   }
 }

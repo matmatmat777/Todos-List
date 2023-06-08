@@ -69,6 +69,23 @@ app.post('/todos', (req, res) => {
   // Envoi du nouvel todo en réponse
   res.status(201).json(todo);
 });
+app.delete('/todos/:id', (req, res) => {
+  const todoId = req.params.id;
+
+  // Recherche du todo correspondant dans la liste des todos
+  const todoIndex = todos.findIndex(todo => todo.id === parseInt(todoId));
+
+  // Vérification si le todo existe
+  if (todoIndex === -1) {
+    return res.status(404).json({ error: 'Todo not found' });
+  }
+
+  // Suppression du todo de la liste des todos
+  todos.splice(todoIndex, 1);
+
+  // Envoi de la réponse avec succès
+  res.sendStatus(204);
+});
 
 
 app.listen(3000, () => {

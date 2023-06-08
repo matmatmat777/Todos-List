@@ -1,9 +1,12 @@
 <div class="row">
-  <div class="col-6 offset-3 mt-3 mb-3">
-<h4 class="text-center">Description de la tache:</h4>
-    <div *ngIf="todo">
-      <h2 class="text-center mt-3">{{ todo.title }}</h2>
-      <p>{{ todo.description }}</p>
+  <div class="col-8 offset-2 mt-3 mb-3">
+    <h4 class="text-center text-primary">Description de la tâche :</h4>
+    <div *ngIf="todo" class="text-justify bg-light p-4 rounded" style="background-color: #f8f9fa;">
+      <h2 class="text-center mt-3 mb-4 text-primary" style="color: #007bff;">{{ todo.title }}</h2>
+      <p style="color: #343a40;">{{ todo.description }}</p>
     </div>
+    <button class="btn btn-primary mt-3" (click)="goBackToList()" style="background-color: #007bff;">
+      <i class="bi bi-arrow-left"></i> Retour
+    </button>
   </div>
 </div>

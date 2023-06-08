@@ -1,1 +1,109 @@
-/* You can add global styles to this file, and also import other style files */
+/* Ajoutez ces styles à votre fichier .scss ou .css */
+
+/* Style pour le titre principal */
+h2.text-center {
+  color: #333;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+/* Style pour les titres de tâches dans la liste */
+.list-group-item .todo-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #555;
+}
+
+/* Style pour les descriptions de tâches dans la liste */
+.list-group-item .todo-description {
+  font-size: 14px;
+  color: #888;
+}
+
+/* Style pour les tâches terminées */
+.list-group-item .todo-done {
+  text-decoration: line-through;
+  color: #888;
+}
+
+/* Style pour les cases à cocher */
+.list-group-item input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+/* Style pour la couleur de fond des tâches terminées */
+.list-group-item.todo-done {
+  background-color: #f2f2f2;
+}
+
+/* Style pour la couleur de survol des titres */
+.list-group-item .todo-title:hover {
+  color: #ff7f50;
+}
+h2.text-center {
+  color: #333;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+/* Style pour les titres de tâches dans la liste */
+.list-group-item .todo-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #555;
+}
+
+/* Style pour les descriptions de tâches dans la liste */
+.list-group-item .todo-description {
+  font-size: 14px;
+  color: #888;
+}
+
+/* Style pour les tâches terminées */
+.list-group-item .todo-done {
+  text-decoration: line-through;
+  color: #888;
+}
+
+/* Style pour les cases à cocher */
+.list-group-item input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+/* Style pour la couleur de fond des tâches terminées */
+.list-group-item.todo-done {
+  background-color: #f2f2f2;
+}
+
+/* Style pour la couleur de survol des titres */
+.list-group-item .todo-title:hover {
+  color: #ff7f50;
+  cursor: pointer;
+}
+
+/* Style pour l'effet de retour en arrière au survol des tâches */
+.list-group-item .todo-title::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: #ff7f50;
+  transition: width 0.3s;
+  z-index: -1;
+}
+
+.list-group-item .todo-title:hover::before {
+  width: 100%;
+}
+.text-primary {
+  color: blue;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
